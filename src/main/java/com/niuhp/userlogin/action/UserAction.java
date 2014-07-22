@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.niuhp.userlogin.domain.User;
 import com.niuhp.userlogin.service.UserService;
+import com.niuhp.userlogin.action.BasicAction;
 
 public class UserAction extends BasicAction{
 
