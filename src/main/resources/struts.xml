@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "struts-2.1.dtd">
+
+<struts>
+
+	<constant name="struts.objectFactory" value="spring" />
+
+	<package name="/userlogin/" extends="json-default">
+		<action name="userAction" class="com.niuhp.userlogin.action.UserAction">
+			<result name="fetchUserList">/fetchUserList.jsp</result>
+			<result name="addUser" type="redirect">userAction!fetchUserList</result>
+			<result name="deleteUser" type="json"></result>
+		</action>
+	</package>
+
+</struts>
