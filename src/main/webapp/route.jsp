@@ -1,2 +1,2 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% response.sendRedirect("/userAction.do!fetchUserList"); %>
+<% response.sendRedirect("/userlogin/userAction.do!fetchUserList"); %>

@@ -2,6 +2,7 @@ package com.niuhp.userlogin.action;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.niuhp.userlogin.domain.User;
@@ -21,12 +22,18 @@ public class UserAction extends BasicAction{
 	
 	private int id;
 	
+	public UserAction() {
+		LogManager.getLogger(getClass()).info("---UserAction-----");
+		System.out.println("-------------1----------------");
+	}
 	public String addUser(){
+		System.out.println("-------------2----------------");
 		userService.addUser(user);
 		return "addUser";
 	}
 
 	public String fetchUserList(){
+		LogManager.getLogger(getClass()).info("---fetchUserList-----");
 		userList = userService.getUserList();
 		return "fetchUserList";
 	}
