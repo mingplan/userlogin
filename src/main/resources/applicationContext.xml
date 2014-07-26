@@ -78,4 +78,5 @@
 		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="txAdvice"/>
 	</aop:config>
 	
+	<bean id="userAction" class="com.niuhp.userlogin.action.UserAction" />
 </beans>

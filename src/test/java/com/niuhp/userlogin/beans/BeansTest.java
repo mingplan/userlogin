@@ -19,8 +19,6 @@ public class BeansTest {
 	public void testBeans(){
 		UserService us=ctx.getBean("userService",UserService.class);
 		User u=new User();
-		u.setName("ssdfs");
-		u.setAge(45);
 		us.addUser(u);
 	}
 }

@@ -1,15 +1,8 @@
 package com.niuhp.userlogin.dao;
 
-import java.util.List;
-
 import com.niuhp.userlogin.domain.User;
 
-public interface UserDAO {
-	
-	void saveUser(User user);
-	
-	List<User> listUser();
+public interface UserDAO extends BaseDao<User> {
 
-	void deleteUser(int id);
-	
+	User userLogin(String username, String password);
 }

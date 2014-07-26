@@ -2,6 +2,8 @@ package com.niuhp.userlogin.action;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,7 +15,7 @@ public class UserAction extends BasicAction{
 
 	private static final long serialVersionUID = -8044906775297267551L;
 	
-	@Autowired
+	@Resource(name="userService")
 	UserService userService;
 	
 	private User user ;
@@ -22,6 +24,13 @@ public class UserAction extends BasicAction{
 	
 	private int id;
 	
+	public UserService getUserService() {
+		return userService;
+	}
+	public void setUserService(UserService userService) {
+		LogManager.getLogger(getClass()).info("---userService-----");
+		this.userService = userService;
+	}
 	public UserAction() {
 		LogManager.getLogger(getClass()).info("---UserAction-----");
 		System.out.println("-------------1----------------");
@@ -33,6 +42,7 @@ public class UserAction extends BasicAction{
 	}
 
 	public String fetchUserList(){
+		System.out.println("-------------3----------------");
 		LogManager.getLogger(getClass()).info("---fetchUserList-----");
 		userList = userService.getUserList();
 		return "fetchUserList";
