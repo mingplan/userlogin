@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC
     "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
-    "http://struts.apache.org/dtds/struts-2.1.dtd">
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
 
 <struts>
 	<constant name="struts.objectFactory" value="spring" />
-	<!-- 更改struts2请求Action的后缀名，默认为action。若想去掉后缀，设为","即可 -->
-	<constant name="struts.action.extension" value="do"></constant>
+	<constant name="struts.action.extension" value="do" />
 
 	<package name="userlogin" namespace="" extends="struts-default">
 		<!-- 配置拦截器 -->
@@ -18,8 +17,8 @@
 			</interceptor-stack>
 		</interceptors-->
 		
-		<action name="userAction" class="userAction">
-			<result name="fetchUserList">../fetchUserList.jsp</result>
+		<action name="userAction" class="userAction" method="fetchUserList">
+			<result name="fetchUserList">/fetchUserList.jsp</result>
 		</action>
 	</package>
 

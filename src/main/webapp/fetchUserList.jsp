@@ -31,8 +31,8 @@ function deleteUserById(id){
 			</tr>
 			<s:iterator value="userList" var="user">
 				<tr id="user_${user.id }">
-					<td>${user.name }</td>
-					<td>${user.age }</td>
+					<td>${user.username }</td>
+					<td>${user.nickname }</td>
 					<td><a href="javascript:void(0);" onclick="javascript:deleteUserById(${user.id });">删除</a> </td>
 				</tr>				
 			</s:iterator>

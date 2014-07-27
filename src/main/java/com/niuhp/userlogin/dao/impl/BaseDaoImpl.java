@@ -6,26 +6,36 @@ import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Query;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.hibernate.SessionFactory;
 
 import com.niuhp.userlogin.dao.BaseDao;
 import com.niuhp.userlogin.util.GenericsUtils;
 
 @SuppressWarnings("unchecked")
-public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
+public class BaseDaoImpl<T> implements BaseDao<T> {
+
+	private SessionFactory sessionFactory;
+
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	private Class<T> entityClass = GenericsUtils.getSuperClassGenricType(getClass());
 
 	@Override
 	public T findById(Serializable id) {
-		return (T) getSessionFactory().getCurrentSession().get(entityClass, id);
+		return (T) sessionFactory.getCurrentSession().get(entityClass, id);
 	}
 
 	@Override
 	public List<T> findAll() {
 		StringBuilder queryBuilder = new StringBuilder();
 		queryBuilder.append("from ").append(entityClass.getSimpleName());
-		Query query = getSessionFactory().getCurrentSession().createQuery(queryBuilder.toString());
+		Query query = sessionFactory.getCurrentSession().createQuery(queryBuilder.toString());
 		return query.list();
 	}
 
@@ -34,7 +44,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 		StringBuilder queryBuilder = new StringBuilder();
 		queryBuilder.append("from ").append(entityClass.getSimpleName()).append(" t where t.").append(propertyName)
 				.append("=:propertyName");
-		Query query = getSessionFactory().getCurrentSession().createQuery(queryBuilder.toString());
+		Query query = sessionFactory.getCurrentSession().createQuery(queryBuilder.toString());
 		query.setParameter(propertyName, propertyValue);
 		return query.list();
 	}
@@ -56,7 +66,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 			}
 		}
 
-		Query query = getSessionFactory().getCurrentSession().createQuery(queryBuilder.toString());
+		Query query = sessionFactory.getCurrentSession().createQuery(queryBuilder.toString());
 		if (propMap != null && !propMap.isEmpty()) {
 			Iterator<String> iterator = propMap.keySet().iterator();
 			while (iterator.hasNext()) {
@@ -70,20 +80,20 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	}
 
 	@Override
-	public T save(T entity) {
-		return (T) getSessionFactory().getCurrentSession().save(entity);
+	public void save(T entity) {
+		sessionFactory.getCurrentSession().save(entity);
 
 	}
 
 	@Override
 	public void update(T entity) {
-		getSessionFactory().getCurrentSession().update(entity);
+		sessionFactory.getCurrentSession().update(entity);
 
 	}
 
 	@Override
 	public void delete(T entity) {
-		getSessionFactory().getCurrentSession().delete(entity);
+		sessionFactory.getCurrentSession().delete(entity);
 
 	}
 

@@ -14,7 +14,7 @@ public interface BaseDao<T> {
 
 	List<T> findByPropertyMap(Map<String, Object> propMap);
 
-	T save(T entity);
+	void save(T entity);
 
 	void update(T entity);
 
