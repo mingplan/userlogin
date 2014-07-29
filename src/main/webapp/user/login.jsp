@@ -1,14 +1,31 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Basic Form - jQuery EasyUI Demo</title>
-<link rel="stylesheet" type="text/css" href="../css/easyui.css"></link>
-<link rel="stylesheet" type="text/css" href="../css/icon.css"></link>
-<link rel="stylesheet" type="text/css" href="../css/demo.css"></link>
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="css/icon.css"/>
+<link rel="stylesheet" type="text/css" href="css/demo.css"/>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+<script>
+	function submitForm() {
+		$('#ff').form('submit');
+	}
+	function clearForm() {
+		$('#ff').form('clear');
+	}
+</script>
+<style scoped="scoped">
+.textbox {
+	height: 20px;
+	margin: 0;
+	padding: 0 2px;
+	box-sizing: content-box;
+}
+</style>
 </head>
 <body>
 	<h2>Basic Form</h2>
@@ -20,23 +37,22 @@
 				<table>
 					<tr>
 						<td>Name:</td>
-						<td><input class="easyui-textbox" type="text" name="name"
-							data-options="required:true"></input></td>
+						<td><input class="easyui-validatebox textbox" type="text"
+							name="name" data-options="required:true"></input></td>
 					</tr>
 					<tr>
 						<td>Email:</td>
-						<td><input class="easyui-textbox" type="text" name="email"
-							data-options="required:true,validType:'email'"></input></td>
+						<td><input class="easyui-validatebox textbox" type="text"
+							name="email" data-options="required:true,validType:'email'"></input></td>
 					</tr>
 					<tr>
 						<td>Subject:</td>
-						<td><input class="easyui-textbox" type="text" name="subject"
-							data-options="required:true"></input></td>
+						<td><input class="easyui-validatebox textbox" type="text"
+							name="subject" data-options="required:true"></input></td>
 					</tr>
 					<tr>
 						<td>Message:</td>
-						<td><input class="easyui-textbox" name="message"
-							data-options="multiline:true" style="height: 60px"></input></td>
+						<td><input class="textbox" name="message"></input></td>
 					</tr>
 					<tr>
 						<td>Language:</td>
@@ -89,13 +105,5 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		function submitForm() {
-			$('#ff').form('submit');
-		}
-		function clearForm() {
-			$('#ff').form('clear');
-		}
-	</script>
 </body>
 </html>
