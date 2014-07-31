@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>用户登录</title>
+<title>用户注册</title>
 <link rel="stylesheet" type="text/css" href="css/common.css" />
 <link rel="stylesheet" type="text/css" href="css/user_login.css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -14,7 +14,7 @@
 	<div class="wrapper">
 		<nav>
 			<ul>
-				<li style="text-align: right;"><a onclick="javascript:window.location.href='register.jsp'">没有账号？注册一个</a></li>
+				<li style="text-align: right;"><a onclick="window.location.href='user/login.jsp'">已有账号，立即登录</a></li>
 			</ul>
 		</nav>
 
@@ -35,7 +35,7 @@
 						<tr class="link_group">
 							<td></td>
 							<td>
-								<button class="link_submit" type="submit" 
+								<button class="link_submit" type="submit"
 									formaction="/userlogin.do">登录</button>
 							</td>
 							<td>
