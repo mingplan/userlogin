@@ -1,6 +1,6 @@
 target/
 log/
-/src/main/resources/config.properties
+config.properties
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.next
