@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>用户登录</title>
 <link rel="stylesheet" type="text/css" href="css/common.css" />
-<link rel="stylesheet" type="text/css" href="css/user_login.css" />
+<link rel="stylesheet" type="text/css" href="css/user.css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 </head>
@@ -14,12 +14,15 @@
 	<div class="wrapper">
 		<nav>
 			<ul>
-				<li style="text-align: right;"><a onclick="javascript:window.location.href='register.jsp'">没有账号？注册一个</a></li>
+				<li style="text-align: right;">没有账号？
+					<button type="submit" form="userlogin"
+						formaction="prepareRegister.do" formmethod="post">注册</button> 一个
+				</li>
 			</ul>
 		</nav>
 
 		<div class="gap_after_header"></div>
-		<div class="table_login">
+		<div class="table_user">
 
 			<form id="userlogin">
 				<div>
@@ -35,8 +38,8 @@
 						<tr class="link_group">
 							<td></td>
 							<td>
-								<button class="link_submit" type="submit" 
-									formaction="/userlogin.do">登录</button>
+								<button class="link_submit" type="submit" formmethod="post"
+									formaction="userlogin.do">登录</button>
 							</td>
 							<td>
 								<button class="link_clear" type="reset">重置</button>
@@ -46,6 +49,11 @@
 				</div>
 			</form>
 		</div>
+		<footer>
+			<ul>
+				<li style="text-align: center;">Copyright©2014 niuhp</li>
+			</ul>
+		</footer>
 	</div>
 </body>
 </html>

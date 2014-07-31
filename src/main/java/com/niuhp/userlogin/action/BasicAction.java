@@ -1,31 +1,26 @@
 package com.niuhp.userlogin.action;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.SessionAware;
+import org.apache.struts2.ServletActionContext;
 
+import com.niuhp.userlogin.util.ActionResult;
 import com.opensymphony.xwork2.ActionSupport;
 
+public class BasicAction extends ActionSupport implements ActionResult {
 
-public class BasicAction extends ActionSupport implements SessionAware,ServletRequestAware{
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-	protected Map<String, Object> session;
-	protected HttpServletRequest request;
-	
-	public String exit(){
-		session.clear();
-		return "exit";
-	}
 
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
+	private HttpServletRequest request;
 
-	public void setServletRequest(HttpServletRequest request) {
-		this.request = request;
+	public HttpServletRequest getRequest() {
+		if (request == null) {
+			request = ServletActionContext.getRequest();
+		}
+		return request;
 	}
 
 }
