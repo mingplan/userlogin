@@ -14,53 +14,56 @@
 	<div class="wrapper">
 		<nav>
 			<ul>
-				<li style="text-align: right;">已有账号，立即
-					<button type="submit" form="userRegister"
-						formaction="prepareLogin.do" formmethod="post">登录</button>
+				<li>已有账号，立即
+					<button type="button"
+						onclick="window.location.href='prepareLogin.do'">登录</button>
 				</li>
 			</ul>
 		</nav>
 
 		<div class="gap_after_header"></div>
 		<div class="table_user">
-
+			<div class="table_title">用户注册</div>
 			<form id="userRegister">
 				<div>
 					<table>
 						<tr>
 							<td>用户名</td>
-							<td colspan="2"><input type="text" name="username"
+						</tr>					
+						<tr>	
+							<td><input type="text" name="username"
 								required="required" placeholder="3-20位字母、数字或下划线" /></td>
 						</tr>
 						<tr>
-							<td>密 码</td>
-							<td colspan="2"><input type="password" name="password"
+							<td>密码</td>
+						</tr>						
+						<tr>
+							<td><input type="password" name="password"
 								required="required" placeholder="6-20位" /></td>
 						</tr>
 						<tr>
+							<td>确认密码</td>
+						</tr>						
+						<tr>
+							<td><input type="password" name="confirmPassword"
+								required="required" placeholder="必须与密码相同" /></td>
+						</tr>	
+						<tr>
 							<td>昵称</td>
-							<td colspan="2"><input type="text" name="nickname"
-								required="required" /></td>
-						</tr>
-						<tr class="link_group">
-							<td></td>
-							<td>
-								<button class="link_submit" type="submit" formmethod="post"
-									formaction="userRegister.do">注册</button>
-							</td>
-							<td>
-								<button class="link_clear" type="reset">重置</button>
-							</td>
+						</tr>											
+						<tr>
+							<td><input type="text" name="nickname"
+								required="required" placeholder="3-20位" /></td>
 						</tr>
 					</table>
 				</div>
 			</form>
+			<div class="link_group">
+				<button type="submit" form="userRegister" formmethod="post"
+					formaction="userRegister.do">注册</button>
+				<button form="userRegister" type="reset">重置</button>
+			</div>			
 		</div>
-		<footer>
-			<ul>
-				<li style="text-align: center;">Copyright©2014 niuhp</li>
-			</ul>
-		</footer>
 	</div>
 </body>
 </html>

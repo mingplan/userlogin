@@ -1,21 +1,19 @@
 body {
 	background-color: #fff;
 	color: #333;
-	font-family: fantasy;
+	font-family: Arial, "楷体";
 	position: fixed;
 	margin: 0px;
 	padding: 0px;
-	list-style: none outside none;
 	width: 100%;
 	height: 100%;
+	width: 100%;
 }
 
 .wrapper {
-	position: relative;
-	margin: 0px; padding : 0px;
+	position: fixed;
 	width: 100%;
 	height: 100%;
-	padding: 0px;
 }
 
 .header {
@@ -24,22 +22,29 @@ body {
 }
 
 .gap_after_header {
-	height: 100px;
+	height: 150px;
 }
 
-table tr, table tr td {
+table tr,table tr td {
 	font-size: 25px;
 	height: 27px;
+}
+
+.table_title {
+	text-align: center;
+	background-color: rgb(128, 128, 128);
 }
 
 a {
 	cursor: pointer;
 }
-
-nav {
-	position: relative;
-	top: 0px;
-	height: 30px;
+input{
+	font-family: Arial, "楷体";
+}
+body nav {
+	position: fixed;
+	width: 100%;
+	height: 60px;
 	background-color: rgb(255, 128, 0);
 }
 
@@ -52,16 +57,12 @@ nav a:VISITED {
 }
 
 nav ul li {
+	margin-right:10px;
 	list-style-type: none;
+	float: right;
 }
 
 button {
 	cursor: pointer;
-}
-
-footer {
-	position: relative;
-	bottom: 0px;
-	padding-bottom: 0px;
-	height: 30px;
+	font-family: Arial, "楷体";
 }

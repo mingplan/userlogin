@@ -14,46 +14,37 @@
 	<div class="wrapper">
 		<nav>
 			<ul>
-				<li style="text-align: right;">没有账号？
-					<button type="submit" form="userlogin"
-						formaction="prepareRegister.do" formmethod="post">注册</button> 一个
+				<li>没有账号？立即
+					<button type="button"
+						onclick="window.location.href='prepareRegister.do'">注册</button>
 				</li>
 			</ul>
 		</nav>
 
 		<div class="gap_after_header"></div>
 		<div class="table_user">
-
+			<div class="table_title">用户登录</div>
 			<form id="userlogin">
 				<div>
 					<table>
 						<tr>
-							<td>用户名</td>
-							<td colspan="2"><input type="text" name="username" /></td>
+							<td><input type="text" required="required" name="username"
+								placeholder="用户名" /></td>
 						</tr>
 						<tr>
-							<td>密 码</td>
-							<td colspan="2"><input type="password" name="password" /></td>
-						</tr>
-						<tr class="link_group">
-							<td></td>
-							<td>
-								<button class="link_submit" type="submit" formmethod="post"
-									formaction="userlogin.do">登录</button>
-							</td>
-							<td>
-								<button class="link_clear" type="reset">重置</button>
-							</td>
+							<td><input type="password" required="required"
+								name="password" placeholder="密码" /></td>
 						</tr>
 					</table>
 				</div>
 			</form>
+			<div class="link_group">
+				<button type="submit" form="userlogin" formmethod="post"
+					formaction="userlogin.do">登录</button>
+
+				<button form="userlogin" type="reset">重置</button>
+			</div>
 		</div>
-		<footer>
-			<ul>
-				<li style="text-align: center;">Copyright©2014 niuhp</li>
-			</ul>
-		</footer>
 	</div>
 </body>
 </html>
