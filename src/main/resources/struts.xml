@@ -8,14 +8,14 @@
 	<constant name="struts.action.extension" value="do" />
 
 	<package name="userlogin" namespace="" extends="struts-default">
-		<!-- 配置拦截器 -->
-		<!--interceptors>
+	
+		<interceptors>
 			<interceptor name="myInterceptor" class="myInterceptor"></interceptor>
 			<interceptor-stack name="myDefult">
 				<interceptor-ref name="myInterceptor"></interceptor-ref>
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 			</interceptor-stack>
-		</interceptors-->
+		</interceptors>
 		
 		<action name="userLogin" class="userAction" method="userLogin">
 			<result name="success"></result>
