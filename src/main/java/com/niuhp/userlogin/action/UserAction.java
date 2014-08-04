@@ -2,6 +2,8 @@ package com.niuhp.userlogin.action;
 
 import com.niuhp.userlogin.service.UserService;
 import com.niuhp.userlogin.action.BasicAction;
+import com.niuhp.userlogin.domain.User;
+import com.opensymphony.xwork2.ActionContext;
 
 public class UserAction extends BasicAction {
 
@@ -23,6 +25,11 @@ public class UserAction extends BasicAction {
 	}
 
 	public String userLogin() {
+		User user=userService.userLogin(username, password);
+		if(user==null){
+			return prepareLogin();
+		}
+		
 		return SUCCESS;
 	}
 

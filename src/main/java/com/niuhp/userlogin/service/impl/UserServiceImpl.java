@@ -1,6 +1,8 @@
 package com.niuhp.userlogin.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.niuhp.userlogin.dao.UserDAO;
 import com.niuhp.userlogin.domain.User;
@@ -34,6 +36,21 @@ public class UserServiceImpl implements UserService {
 	public void deleteUser(int id) {
 		userDao.deleteById(id);
 
+	}
+
+	@Override
+	public User userLogin(String username, String password) {
+
+		return userDao.userLogin(username, password);
+	}
+
+	@Override
+	public void modifyPassword(int id, String newPassword) {
+		Map<String, Object> cMap = new HashMap<String, Object>();
+		cMap.put("id", id);
+		Map<String, Object> vMap = new HashMap<String, Object>();
+		vMap.put("password", newPassword);
+		userDao.udateByPropertyMap(cMap, vMap);
 	}
 
 }

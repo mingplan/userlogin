@@ -16,8 +16,10 @@ public interface BaseDao<T> {
 
 	void save(T entity);
 
-	void update(T entity);
+	void update(T entity);	
 
+	int udateByPropertyMap(Map<String, Object> conditionMap,Map<String, Object> valueMap);
+	
 	void delete(T entity);
 
 	void deleteById(Serializable id);

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -103,6 +104,54 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		if (entity != null) {
 			delete(entity);
 		}
+	}
+
+	@Override
+	public int udateByPropertyMap(Map<String, Object> conditionMap, Map<String, Object> valueMap) {
+		StringBuilder queryBuilder = new StringBuilder();
+		queryBuilder.append("update ").append(entityClass.getSimpleName()).append(" t");
+
+		Set<String> propNames = valueMap.keySet();
+		Iterator<String> propNameIt = propNames.iterator();
+		String propName = propNameIt.next();
+		queryBuilder.append(" set t.").append(propName).append("=:").append(propName);
+
+		while (propNameIt.hasNext()) {
+			propName = propNameIt.next();
+			queryBuilder.append(",t.").append(propName).append("=:").append(propName);
+		}
+
+		if (conditionMap != null && !conditionMap.isEmpty()) {
+			queryBuilder.append(" where");
+
+			Iterator<String> iterator = conditionMap.keySet().iterator();
+			propName = iterator.next();
+			queryBuilder.append(" t.").append(propName).append("=:").append(propName);
+
+			while (iterator.hasNext()) {
+				propName = iterator.next();
+				queryBuilder.append(" and t.").append(propName).append("=:").append(propName);
+			}
+		}
+
+		Query query = sessionFactory.getCurrentSession().createQuery(queryBuilder.toString());
+		if (conditionMap != null && !conditionMap.isEmpty()) {
+			Iterator<String> iterator = conditionMap.keySet().iterator();
+			while (iterator.hasNext()) {
+				String propertyName = iterator.next();
+				Object propertyValue = conditionMap.get(propertyName);
+				query.setParameter(propertyName, propertyValue);
+			}
+		}
+		if (valueMap != null && !valueMap.isEmpty()) {
+			Iterator<String> iterator = valueMap.keySet().iterator();
+			while (iterator.hasNext()) {
+				String propertyName = iterator.next();
+				Object propertyValue = valueMap.get(propertyName);
+				query.setParameter(propertyName, propertyValue);
+			}
+		}
+		return query.executeUpdate();
 	}
 
 }
