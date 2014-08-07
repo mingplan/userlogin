@@ -16,7 +16,7 @@
 			<ul>
 				<li>没有账号？立即
 					<button type="button"
-						onclick="window.location.href='prepareRegister.do'">注册</button>
+						onclick="window.location.href='userAction!prepareRegister.do'">注册</button>
 				</li>
 			</ul>
 		</nav>

@@ -7,30 +7,19 @@
 	<constant name="struts.objectFactory" value="spring" />
 	<constant name="struts.action.extension" value="do" />
 
-	<package name="userlogin" namespace="" extends="struts-default">
-	
-		<interceptors>
-			<interceptor name="myInterceptor" class="myInterceptor"></interceptor>
-			<interceptor-stack name="myDefult">
-				<interceptor-ref name="myInterceptor"></interceptor-ref>
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-			</interceptor-stack>
-		</interceptors>
-		
-		<action name="userLogin" class="userAction" method="userLogin">
-			<result name="success"></result>
-			<result name="FAILED"></result>
+	<package name="userlogin" extends="struts-default">
+
+		<!-- interceptors> <interceptor name="loginInterceptor" class="loginInterceptor"> 
+			<param name=""></param> </interceptor> <interceptor-stack name="loginInterceptor"> 
+			<interceptor-ref name="myInterceptor"></interceptor-ref> <interceptor-ref 
+			name="defaultStack"></interceptor-ref> </interceptor-stack> </interceptors -->
+
+		<action name="userAction" class="userAction">
+			<result name="prepareLogin">/user/login.jsp</result>
+			<result name="prepareRegister">/user/register.jsp</result>
+			<result name="loginSuccess">/user/user_home.jsp</result>
+			<result name="registerSuccess">/user/login.jsp</result>
 		</action>
-		<action name="userRegister" class="userAction" method="userRegister">
-			<result name="success"></result>
-			<result name="FAILED"></result>
-		</action>
-		<action name="prepareLogin" class="userAction" method="prepareLogin">
-			<result name="success">/user/login.jsp</result>
-		</action>
-		<action name="prepareRegister" class="userAction" method="prepareRegister">
-			<result name="success">/user/register.jsp</result>
-		</action>						
 	</package>
 
 </struts>

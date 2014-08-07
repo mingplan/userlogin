@@ -1,11 +1,12 @@
 package com.niuhp.userlogin.action;
 
 import com.niuhp.userlogin.service.UserService;
+import com.niuhp.userlogin.util.ActionResult;
 import com.niuhp.userlogin.action.BasicAction;
 import com.niuhp.userlogin.domain.User;
 import com.opensymphony.xwork2.ActionContext;
 
-public class UserAction extends BasicAction {
+public class UserAction extends BasicAction implements ActionResult {
 
 	private static final long serialVersionUID = -8044906775297267551L;
 
@@ -25,24 +26,24 @@ public class UserAction extends BasicAction {
 	}
 
 	public String userLogin() {
-		User user=userService.userLogin(username, password);
-		if(user==null){
+		User user = userService.userLogin(username, password);
+		if (user == null) {
 			return prepareLogin();
 		}
-		
-		return SUCCESS;
+
+		return LOGIN_SUCCESS;
 	}
 
 	public String userRegister() {
-		return SUCCESS;
+		return REGISTER_SUCCESS;
 	}
 
 	public String prepareLogin() {
-		return SUCCESS;
+		return PREPARE_LOGIN;
 	}
 
 	public String prepareRegister() {
-		return SUCCESS;
+		return PREPARE_REGISTER;
 	}
 
 	public int getId() {

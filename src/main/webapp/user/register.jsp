@@ -16,7 +16,7 @@
 			<ul>
 				<li>已有账号，立即
 					<button type="button"
-						onclick="window.location.href='prepareLogin.do'">登录</button>
+						onclick="window.location.href='userAction!prepareLogin.do'">登录</button>
 				</li>
 			</ul>
 		</nav>
