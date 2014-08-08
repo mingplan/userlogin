@@ -6,5 +6,6 @@ public interface ActionResult {
 	String PREPARE_REGISTER = "prepareRegister";
 	String LOGIN_SUCCESS = "loginSuccess";
 	String REGISTER_SUCCESS = "registerSuccess";
+	String USER_HOME = "userHome";
 
 }

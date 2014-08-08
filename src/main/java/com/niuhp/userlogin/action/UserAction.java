@@ -1,10 +1,14 @@
 package com.niuhp.userlogin.action;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.niuhp.userlogin.security.EncryptorMgr;
 import com.niuhp.userlogin.service.UserService;
 import com.niuhp.userlogin.util.ActionResult;
 import com.niuhp.userlogin.action.BasicAction;
 import com.niuhp.userlogin.domain.User;
-import com.opensymphony.xwork2.ActionContext;
 
 public class UserAction extends BasicAction implements ActionResult {
 
@@ -26,16 +30,20 @@ public class UserAction extends BasicAction implements ActionResult {
 	}
 
 	public String userLogin() {
+		password = EncryptorMgr.encrypt(password);
 		User user = userService.userLogin(username, password);
 		if (user == null) {
 			return prepareLogin();
 		}
-
-		return LOGIN_SUCCESS;
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		session.setAttribute("user", user);
+		return USER_HOME;
 	}
 
 	public String userRegister() {
-		return REGISTER_SUCCESS;
+		User user = constructUser();
+		userService.addUser(user);
+		return PREPARE_LOGIN;
 	}
 
 	public String prepareLogin() {
@@ -44,6 +52,16 @@ public class UserAction extends BasicAction implements ActionResult {
 
 	public String prepareRegister() {
 		return PREPARE_REGISTER;
+	}
+
+	private User constructUser() {
+		User user = new User();
+		user.setId(id);
+		user.setNickname(nickname);
+		user.setUsername(username);
+		password = EncryptorMgr.encrypt(password);
+		user.setPassword(password);
+		return user;
 	}
 
 	public int getId() {

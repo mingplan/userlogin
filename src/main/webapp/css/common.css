@@ -38,9 +38,11 @@ table tr,table tr td {
 a {
 	cursor: pointer;
 }
-input{
+
+input {
 	font-family: Arial, "楷体";
 }
+
 body nav {
 	position: fixed;
 	width: 100%;
@@ -57,9 +59,23 @@ nav a:VISITED {
 }
 
 nav ul li {
-	margin-right:10px;
+	margin-right: 10px;
 	list-style-type: none;
 	float: right;
+}
+
+.level2 {
+	display: none;
+	position: relative;
+	height: auto;
+}
+
+.level2 li {
+	float: none;
+}
+
+.level1 li:HOVER .level2 {
+	display: block;
 }
 
 button {

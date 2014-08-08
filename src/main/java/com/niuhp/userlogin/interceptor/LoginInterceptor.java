@@ -1,11 +1,14 @@
 package com.niuhp.userlogin.interceptor;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts2.ServletActionContext;
 
+import com.niuhp.userlogin.util.ActionResult;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.MethodFilterInterceptor;
 
-public class LoginInterceptor extends MethodFilterInterceptor {
+public class LoginInterceptor extends MethodFilterInterceptor implements ActionResult {
 
 	/**
 	 * 
@@ -14,9 +17,10 @@ public class LoginInterceptor extends MethodFilterInterceptor {
 
 	@Override
 	protected String doIntercept(ActionInvocation actionInvocation) throws Exception {
-		Object user = ServletActionContext.getRequest().getSession().getAttribute("user");
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		Object user = session.getAttribute("user");
 		if (user == null) {
-			return "";
+			return PREPARE_LOGIN;
 		}
 		return actionInvocation.invoke();
 	}

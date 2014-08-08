@@ -40,7 +40,7 @@
 			</form>
 			<div class="link_group">
 				<button type="submit" form="userlogin" formmethod="post"
-					formaction="userlogin.do">登录</button>
+					formaction="userAction!userLogin.do">登录</button>
 
 				<button form="userlogin" type="reset">重置</button>
 			</div>

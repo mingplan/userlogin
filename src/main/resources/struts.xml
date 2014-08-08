@@ -9,16 +9,22 @@
 
 	<package name="userlogin" extends="struts-default">
 
-		<!-- interceptors> <interceptor name="loginInterceptor" class="loginInterceptor"> 
-			<param name=""></param> </interceptor> <interceptor-stack name="loginInterceptor"> 
-			<interceptor-ref name="myInterceptor"></interceptor-ref> <interceptor-ref 
-			name="defaultStack"></interceptor-ref> </interceptor-stack> </interceptors -->
+		<interceptors>
+			<interceptor name="loginInterceptor" class="loginInterceptor">
+				<param name="excludeMethods ">userLogin,userRegister,prepareLogin,prepareRegister</param>
+			</interceptor>
+			<interceptor-stack name="loginInterceptorStack">
+				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="loginInterceptorStack" />
+
 
 		<action name="userAction" class="userAction">
 			<result name="prepareLogin">/user/login.jsp</result>
 			<result name="prepareRegister">/user/register.jsp</result>
-			<result name="loginSuccess">/user/user_home.jsp</result>
-			<result name="registerSuccess">/user/login.jsp</result>
+			<result name="userHome">/user/user_home.jsp</result>
 		</action>
 	</package>
 
