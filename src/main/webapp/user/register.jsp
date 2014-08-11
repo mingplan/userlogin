@@ -60,7 +60,7 @@
 			</form>
 			<div class="link_group">
 				<button type="submit" form="userRegister" formmethod="post"
-					formaction="userAction!userRegister.do">注册</button>
+					formaction="userAction!register.do">注册</button>
 				<button form="userRegister" type="reset">重置</button>
 			</div>			
 		</div>

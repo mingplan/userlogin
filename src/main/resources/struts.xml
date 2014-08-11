@@ -11,7 +11,7 @@
 
 		<interceptors>
 			<interceptor name="loginInterceptor" class="loginInterceptor">
-				<param name="excludeMethods ">userLogin,userRegister,prepareLogin,prepareRegister</param>
+				<param name="excludeMethods ">login,register,prepareLogin,prepareRegister,logout</param>
 			</interceptor>
 			<interceptor-stack name="loginInterceptorStack">
 				<interceptor-ref name="loginInterceptor" />

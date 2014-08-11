@@ -29,29 +29,45 @@ public class UserAction extends BasicAction implements ActionResult {
 		this.userService = userService;
 	}
 
-	public String userLogin() {
+	public String login() {
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		Object user = session.getAttribute("user");
+		if (user != null) {
+			return USER_HOME;
+		}
+
 		password = EncryptorMgr.encrypt(password);
-		User user = userService.userLogin(username, password);
+		user = userService.userLogin(username, password);
 		if (user == null) {
 			return prepareLogin();
 		}
-		HttpSession session = ServletActionContext.getRequest().getSession();
 		session.setAttribute("user", user);
 		return USER_HOME;
 	}
 
-	public String userRegister() {
+	public String register() {
 		User user = constructUser();
 		userService.addUser(user);
 		return PREPARE_LOGIN;
 	}
 
 	public String prepareLogin() {
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		Object user = session.getAttribute("user");
+		if (user != null) {
+			return USER_HOME;
+		}
 		return PREPARE_LOGIN;
 	}
 
 	public String prepareRegister() {
 		return PREPARE_REGISTER;
+	}
+
+	public String logout() {
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		session.removeAttribute("user");
+		return PREPARE_LOGIN;
 	}
 
 	private User constructUser() {
