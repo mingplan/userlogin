@@ -1,5 +1,8 @@
 package com.niuhp.userlogin.action;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
@@ -68,6 +71,32 @@ public class UserAction extends BasicAction implements ActionResult {
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		session.removeAttribute("user");
 		return PREPARE_LOGIN;
+	}
+
+	public String adminLogin() {
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		Object admin = session.getAttribute("admin");
+		if (admin != null) {
+			return ADMIN_HOME;
+		}
+
+		String relPasswd = username + "Root";
+		if (relPasswd.equals(password)) {
+			nickname = username;
+			admin = constructUser();
+			session.setAttribute("admin", admin);
+			List<User> users = userService.getUserList();
+			HttpServletRequest request = ServletActionContext.getRequest();
+			request.setAttribute("users", users);
+			return ADMIN_HOME;
+		}
+		return ADMIN_LOGIN;
+	}
+
+	public String adminLogout() {
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		session.removeAttribute("admin");
+		return ADMIN_LOGIN;
 	}
 
 	private User constructUser() {

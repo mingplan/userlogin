@@ -8,4 +8,7 @@ public interface ActionResult {
 	String REGISTER_SUCCESS = "registerSuccess";
 	String USER_HOME = "userHome";
 
+	String ADMIN_LOGIN = "adminLogin";
+	String ADMIN_HOME = "adminHome";
+
 }

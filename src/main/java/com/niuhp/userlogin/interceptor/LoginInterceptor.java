@@ -18,6 +18,10 @@ public class LoginInterceptor extends MethodFilterInterceptor implements ActionR
 	@Override
 	protected String doIntercept(ActionInvocation actionInvocation) throws Exception {
 		HttpSession session = ServletActionContext.getRequest().getSession();
+		Object admin = session.getAttribute("admin");
+		if (admin != null) {
+			return actionInvocation.invoke();
+		}
 		Object user = session.getAttribute("user");
 		if (user == null) {
 			return PREPARE_LOGIN;
