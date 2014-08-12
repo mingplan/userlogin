@@ -34,7 +34,7 @@
 						<td>昵称</td>
 						<td>操作</td>
 					</tr>
-					<c:forEach var="user" items="<%=request.getAttribute("users")%>" varStatus="status">
+					<c:forEach var="user" items="${requestScope.users }" varStatus="status">
 					<tr>
 						<td>${status.index }</td>
 						<td>${user.username }</td>
