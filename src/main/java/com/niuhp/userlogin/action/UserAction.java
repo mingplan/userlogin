@@ -99,6 +99,17 @@ public class UserAction extends BasicAction implements ActionResult {
 		return ADMIN_LOGIN;
 	}
 
+	public String resetPasswd() {
+		password = EncryptorMgr.encrypt(password);
+		userService.modifyPassword(id, password);
+		return ADMIN_HOME;
+	}
+
+	public String deleteUser() {
+		userService.deleteUser(id);
+		return ADMIN_HOME;
+	}
+
 	private User constructUser() {
 		User user = new User();
 		user.setId(id);

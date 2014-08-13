@@ -34,15 +34,22 @@
 						<td>昵称</td>
 						<td>操作</td>
 					</tr>
-					<c:forEach var="user" items="${requestScope.users }" varStatus="status">
-					<tr>
-						<td>${status.index }</td>
-						<td>${user.username }</td>
-						<td>${user.nickname }</td>
-						<td><a>重置密码</a>|<a>删除</a></td>						
-					</tr>
+					<c:forEach var="user" items="${requestScope.users }"
+						varStatus="status">
+						<tr>
+							<td>${status.index+1 }</td>
+							<td>${user.username }</td>
+							<td>${user.nickname }</td>
+							<td><a href="javascript:void(0)" onclick="$('#passwd').style.display='block'">重置密码</a>| <a
+								href="userAction!deleteUser.do?id=${user.id }">删除</a></td>
+						</tr>
 					</c:forEach>
 				</table>
+			</div>
+			<div id="passwd" style="width: 100px; display: none;">
+				<input type="hidden" name="id" id="uid" value="0" /> 
+				<input type="password" name="password" />
+				<button>确定</button><button>取消</button>
 			</div>
 		</div>
 	</div>
