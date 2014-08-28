@@ -34,13 +34,13 @@ public class UserAction extends BasicAction implements ActionResult {
 
 	public String login() {
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		Object user = session.getAttribute("user");
-		if (user != null) {
-			return USER_HOME;
-		}
+//		Object user = session.getAttribute("user");
+//		if (user != null) {
+//			return USER_HOME;
+//		}
 
 		password = EncryptorMgr.encrypt(password);
-		user = userService.userLogin(username, password);
+		Object user = userService.userLogin(username, password);
 		if (user == null) {
 			return prepareLogin();
 		}
@@ -77,6 +77,9 @@ public class UserAction extends BasicAction implements ActionResult {
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		Object admin = session.getAttribute("admin");
 		if (admin != null) {
+			List<User> users = userService.getUserList();
+			HttpServletRequest request = ServletActionContext.getRequest();
+			request.setAttribute("users", users);
 			return ADMIN_HOME;
 		}
 
@@ -100,6 +103,9 @@ public class UserAction extends BasicAction implements ActionResult {
 	}
 
 	public String resetPasswd() {
+		if (password == null) {
+			password = username;
+		}
 		password = EncryptorMgr.encrypt(password);
 		userService.modifyPassword(id, password);
 		return ADMIN_HOME;

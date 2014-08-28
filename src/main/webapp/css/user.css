@@ -1,7 +1,7 @@
 .table_user {
 	width: 300px;
 	margin: 0 auto;
-	font-size: 25px;
+	font-size: 20px;
 }
 
 table {
@@ -29,7 +29,7 @@ input {
 }
 
 .table_users {
-	width: 500px;
+	width: 800px;
 	margin: 0 auto;
 	font-size: 20px;
 }

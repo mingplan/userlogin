@@ -40,17 +40,22 @@
 							<td>${status.index+1 }</td>
 							<td>${user.username }</td>
 							<td>${user.nickname }</td>
-							<td><a href="javascript:void(0)" onclick="$('#passwd').style.display='block'">重置密码</a>| <a
-								href="userAction!deleteUser.do?id=${user.id }">删除</a></td>
+							<td><a href="userAction!resetPasswd.do?id=${user.id }">重置密码</a>|
+								<a href="userAction!deleteUser.do?id=${user.id }">删除</a></td>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
-			<div id="passwd" style="width: 100px; display: none;">
-				<input type="hidden" name="id" id="uid" value="0" /> 
-				<input type="password" name="password" />
-				<button>确定</button><button>取消</button>
-			</div>
+			<!-- div id="passwd" style="width: 100px; display: none;">
+				<div style="width: 80px; height: 20px;">
+					修改密码<img src="images/close.png" onclick="$('#passwd').style.display='none'"/>
+				</div>
+				<div>
+					<input type="hidden" name="id" id="uid" value="0" /> <input
+						type="password" name="password" />
+					<button>确定</button>
+				</div>
+			</div-->
 		</div>
 	</div>
 </body>

@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/common.css" />
 <link rel="stylesheet" type="text/css" href="css/user.css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/user.js"></script>
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 </head>
 <body>
@@ -24,7 +25,7 @@
 		<div class="gap_after_header"></div>
 		<div class="table_user">
 			<div class="table_title">用户注册</div>
-			<form id="userRegister">
+			<form id="userRegister" onsubmit="return checkRegister(this);">
 				<div>
 					<table>
 						<tr>
